@@ -1,0 +1,28 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: password
+    hikari:
+      connectionTimeout: 20000
+      maximumPoolSize: 5
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+    generate-ddl: true
+    hibernate.ddl-auto: update
+    show-sql: true
+
+author:
+  datasource:
+    host: localhost
+    port: 5432
+    database: postgres
+    username: postgres
+    password: password
+
+redis:
+  uri: redis://localhost:6379

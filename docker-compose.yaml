@@ -1,0 +1,49 @@
+version: '3'
+services:
+#    zookeeper-seo:
+#        image: debezium/zookeeper:1.5.4.Final
+#        ports:
+#            - "2181:2181"
+#    kafka-seo:
+#        image: debezium/kafka:1.5.4.Final
+#        ports:
+#            - "9092:9092"
+#            - "29092:29092"
+#        environment:
+#            - KAFKA_ADVERTISED_LISTENERS=LISTENER_EXT://localhost:29092,LISTENER_INT://kafka-seo:9092
+#            - KAFKA_LISTENER_SECURITY_PROTOCOL_MAP=LISTENER_INT:PLAINTEXT,LISTENER_EXT:PLAINTEXT
+#            - KAFKA_LISTENERS=LISTENER_INT://0.0.0.0:9092,LISTENER_EXT://0.0.0.0:29092
+#            - KAFKA_INTER_BROKER_LISTENER_NAME=LISTENER_INT
+#            - ZOOKEEPER_CONNECT=zookeeper-seo:2181
+#            - JVM_OPTS=-Xmx1g -Xms1g
+#        depends_on:
+#            - zookeeper-seo
+    postgresql-database:
+        image: debezium/postgres:9.6
+        ports:
+            - "5432:5432"
+        environment:
+            - POSTGRES_USER=postgres
+            - POSTGRES_PASSWORD=password
+            - POSTGRES_DB=postgres
+        volumes:
+            - ./postgres-data:/var/lib/postgresql/data
+#            - ./init.db/init.sql:/docker-entrypoint-initdb.d/init.sql
+#    connect:
+#        image: debezium/redis-sink-connector:1.0
+#        ports:
+#            - "8083:8083"
+#        links:
+#            - kafka-seo
+#            - postgresql-database
+#        environment:
+#            - BOOTSTRAP_SERVERS=kafka-seo:9092
+#            - GROUP_ID=1
+#            - CONFIG_STORAGE_TOPIC=my_connect_configs
+#            - OFFSET_STORAGE_TOPIC=my_connect_offsets
+#            - STATUS_STORAGE_TOPIC=my_connect_statuses
+    redis-seo:
+        image: redis
+        ports:
+            - "6379:6379"
+
