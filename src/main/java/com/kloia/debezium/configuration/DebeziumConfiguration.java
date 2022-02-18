@@ -25,9 +25,9 @@ public class DebeziumConfiguration {
 
 
     @Bean
-    public io.debezium.config.Configuration customerConnector() {
+    public io.debezium.config.Configuration authorConnector() {
         return io.debezium.config.Configuration.create()
-                .with("name", "customer-connector")
+                .with("name", "author-connector")
                 .with("connector.class", "io.debezium.connector.postgresql.PostgresConnector")
                 .with("offset.storage", "org.apache.kafka.connect.storage.FileOffsetBackingStore")
                 .with("offset.storage.file.filename", "/tmp/offsets.dat")
