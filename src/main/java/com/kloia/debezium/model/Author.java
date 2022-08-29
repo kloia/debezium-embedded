@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Data
@@ -16,12 +17,13 @@ import javax.persistence.Table;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "AUTHOR")
+@SequenceGenerator(allocationSize = 1, name = "sequence", sequenceName = "seq_author")
 public class Author {
 
     private static final long serialVersionUID = -885221213277705988L;
 
     @Id
-    @GeneratedValue(generator = "SEQ_SEO_REDIRECTION", strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(generator = "sequence", strategy = GenerationType.SEQUENCE)
     private Long id;
 
     @Column(name = "NAME")
