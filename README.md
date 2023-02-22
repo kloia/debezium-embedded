@@ -31,3 +31,7 @@ alter table author
 ### Creating the environment 
 
 run `docker-compose up`
+
+### Blogpost
+
+https://www.kloia.com/blog/implementing-datasync-with-debezium-by-leveraging-outbox-pattern
